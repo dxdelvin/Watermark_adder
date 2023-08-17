@@ -1,29 +1,44 @@
+import time
 from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 from PIL import Image, ImageTk
 
 window = Tk()
 window.title("WaterMark Adder")
 window.geometry("300x250")
 window.config(bg="#0f0f0f")
+window.resizable('False','False')
+
+o_img = None
+w_img = None
 
 def original_file():
     global o_img
     f_types = [('Png Files', '*.png'),('Jpg Files','*.jpg')]
     filename = filedialog.askopenfilename(filetypes=f_types)
-    o_img = Image.open(filename)
-    o_img = ImageTk.PhotoImage(file=filename)
-    return o_img
+    o_img = Image.open(filename).convert("RGBA")
+    # o_img = ImageTk.PhotoImage(file=filename)
 
 def watermark_file():
     global w_img
-    f_types = [('Png Files', '*.png')]
+    f_types = [('Png Files', '*.png'),('Jpg Files','*.jpg')]
     filename = filedialog.askopenfilename(filetypes=f_types)
-    w_img = Image.open(filename)
-    w_img = ImageTk.PhotoImage(file=filename)
+    w_img = Image.open(filename).convert("RGBA")
+    # w_img = ImageTk.PhotoImage(file=filename)
 
-def process(o_img,w_img):
-    pass
+def process():
+    global o_img
+    global w_img
+    warning = Label(window, text="PLEASE PUT SOME IMAGES", bg="#0f0f0f", fg="red")
+    if o_img and w_img:
+        x, y = o_img.size
+        w_img = w_img.resize((x,y))
+        o_img.putalpha(225)
+        w_img.putalpha(45)
+        img3 = Image.alpha_composite(o_img, w_img)
+        img3.show()
+    else:
+        messagebox.showwarning(title="WARNING!",message="You need to add Images to Process")
 
 
 l1 = Label(window,text="Input Your Image:",bg="#0f0f0f", fg="white").place(relx=0.5, rely=0.2, anchor=CENTER)
