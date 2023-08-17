@@ -10,11 +10,10 @@ The Watermarker Adder project is a simple utility tool that allows users to add 
 This tool provides an easy way to apply a watermark to multiple images simultaneously, saving time and effort compared to applying watermarks individually.
 
 ## Features
-
-- Customizable watermark: Choose the watermark image or text, position, opacity, and size.
 - Multiple formats supported: Supports popular image formats such as JPEG, PNG, and GIF.
-- Preview: Preview the watermark before applying it to the images.
 - Output quality: Control the quality and compression settings of the output images.
+- Your Watermark will be adjusted based on the orignal image size automatically
+- It gives You warning if Images are not set Properly!
 
 ## Getting Started
 
