@@ -12,6 +12,7 @@ window.resizable('False','False')
 o_img = None
 w_img = None
 
+
 def original_file():
     global o_img
     f_types = [('Png Files', '*.png'),('Jpg Files','*.jpg')]
